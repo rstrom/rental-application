@@ -1,0 +1,19 @@
+[
+  {
+    "component": "TextField",
+    "label": "What is your full name?"
+  },
+  {
+    "component": "TextField",
+    "label": "What is your email?"
+  },
+  {
+    "component": "TextField",
+    "label": "What is your phone number?"
+  },
+  {
+    "component": "Radio",
+    "label": "What is your monthly salary?",
+    "values": ["0 - 1.000", "1.000 - 2.000", "2.000 - 3.000", "3.000 - 4.000"]
+  }
+]
