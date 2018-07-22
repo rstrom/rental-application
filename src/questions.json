@@ -1,23 +1,23 @@
 [
   {
     "component": "TextField",
-    "label": "Full name"
+    "label": "👤 Full Name"
   },
   {
     "component": "TextField",
     "type": "email",
-    "label": "Email"
+    "label": "✉️ Email"
   },
   {
     "component": "TextField",
     "type": "tel",
     "pattern": "[0-9]{4}-[0-9]{3}-[0-9]{2}-[0-9]{2}",
     "placeholder": "0000-000-00-000",
-    "label": "Phone number"
+    "label": "📞 Phone Number"
   },
   {
     "component": "Radio",
-    "label": "Monthly salary",
+    "label": "💰 Monthly Salary",
     "values": ["0 - 1.000", "1.000 - 2.000", "2.000 - 3.000", "3.000 - 4.000"]
   }
 ]

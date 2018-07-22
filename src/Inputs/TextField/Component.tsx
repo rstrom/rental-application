@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { themeGet } from "styled-system";
 
 export interface IProps {
   label?: string;
@@ -17,8 +16,8 @@ const Wrapper = styled.div`
 
   & label {
     pointer-events: none;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: #aaa;
   }
 
   & input:placeholder-shown + label {
@@ -57,14 +56,6 @@ const TextField = styled.input.attrs({
 
   &:focus {
     outline: 0;
-  }
-
-  &:valid {
-    border-bottom: 1px solid ${themeGet("colors.success")};
-  }
-
-  &:invalid:focus:not(:placeholder-shown) {
-    border-bottom: 1px solid ${themeGet("colors.warning")};
   }
 `;
 

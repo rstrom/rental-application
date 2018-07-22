@@ -30,7 +30,6 @@ export default compose(
     const InputComponent = get(InputComponents, componentType);
     const question = get(props, `questions.${pageNumber - 1}`);
     const response = props.responses[Number(pageNumber) - 1];
-    console.log("page", pageNumber);
     return {
       ...props,
       children: (

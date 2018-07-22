@@ -25,9 +25,8 @@ const Radio = styled.div.attrs({ className: "radio" })`
 `;
 
 const Label = styled.div`
-  text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 400;
+  color: #aaa;
 `;
 
 const Component: React.ComponentType<IProps> = ({

@@ -25,10 +25,13 @@ const Text = styled.div`
   ${color}
 `;
 
-const Component: React.ComponentType<IProps> = ({ questions }) => (
+const Component: React.ComponentType<IProps> = ({}) => (
   <Page>
-    <Text p="1rem 0" fontSize="1.25em" fontWeight="600">
-      Rental application form
+    <Text p="1rem" fontSize="1.25em" fontWeight="600">
+      🏡 Application Form
+    </Text>
+    <Text p="1rem" fontWeight="300">
+      To process your application we need some basic information about you
     </Text>
     <Link to={"/page/1"}>
       <Button
@@ -36,9 +39,9 @@ const Component: React.ComponentType<IProps> = ({ questions }) => (
         mt="2rem"
         bg="white"
         borderColor="blue"
-        border="1px solid"
+        border="2px solid"
       >
-        Begin
+        Begin Application
       </Button>
     </Link>
   </Page>

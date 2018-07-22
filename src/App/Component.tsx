@@ -26,7 +26,7 @@ injectGlobal`
 
 const App = styled.div`
   display: flex;
-  font-family: Helvetica;
+  font-family: Lato;
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
@@ -35,6 +35,11 @@ const App = styled.div`
 
   & * {
     transition: all 0.25s linear;
+  }
+
+  & input,
+  button {
+    font-family: Lato;
   }
 `;
 

@@ -28,10 +28,12 @@ const Component: React.ComponentType<IProps> = ({ questions, responses }) => (
     <Text fontSize="1.25em" fontWeight="bold" m="1rem 0">
       Thanks!
     </Text>
-    <Text mb="2rem">Here are your responses:</Text>
+    <Text mb="2rem">Please review your submission below:</Text>
     {questions.map(({ label }, i) => (
-      <Text key={i} p="2rem" bg="#fff">
-        <Text color="#aaa">{label}</Text>
+      <Text key={i} p="1rem" bg="#fff">
+        <Text color="#aaa" fontWeight="300">
+          {label}
+        </Text>
         <Text>{responses[i]}</Text>
       </Text>
     ))}

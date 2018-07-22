@@ -14,9 +14,11 @@ export default styled.button`
   ${flex};
   ${alignSelf};
   ${justifySelf};
+  background-color: white;
   ${color};
   font-size: 0.875em;
   ${fontSize};
+  border: none;
   ${borders};
   ${borderColor};
   padding: 6px 16px;
