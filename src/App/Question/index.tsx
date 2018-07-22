@@ -3,7 +3,6 @@ import { get } from "lodash";
 import { array, func, object } from "prop-types";
 import * as React from "react";
 import { compose, getContext, mapProps } from "recompose";
-import Dropdown from "../../Inputs/Dropdown";
 import Radio from "../../Inputs/Radio";
 import TextField from "../../Inputs/TextField";
 import Component from "./Component";
@@ -15,7 +14,6 @@ interface IProps {
 }
 
 const InputComponents = {
-  Dropdown,
   Radio,
   TextField
 };
@@ -32,11 +30,13 @@ export default compose(
     const InputComponent = get(InputComponents, componentType);
     const question = get(props, `questions.${pageNumber - 1}`);
     const response = props.responses[Number(pageNumber) - 1];
+    console.log("page", pageNumber);
     return {
       ...props,
       children: (
         <InputComponent
           {...question}
+          key={pageNumber}
           defaultValue={response}
           onChange={(value: string) =>
             props.respond(Number(pageNumber) - 1, value)
@@ -51,6 +51,7 @@ export default compose(
         }
       },
       handleNext: () => {
+        console.log("next", pageNumber);
         if (get(props, "questions.length") > pageNumber) {
           props.history.push(`/page/${Number(pageNumber) + 1}`);
         } else {

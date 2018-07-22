@@ -20,7 +20,7 @@ export interface IProps {
   handleNext(): void;
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   margin-top: 1rem;
 `;
 
@@ -69,9 +69,16 @@ const Component: React.ComponentType<IProps> = ({
   responses
 }) => (
   <Wrapper
-    onKeyPress={e =>
-      e.key === "Enter" && !!responses[Number(pageNumber) - 1] && handleNext()
-    }
+    onSubmit={e => {
+      console.log(pageNumber, e);
+      e.preventDefault();
+      if (!!responses[Number(pageNumber) - 1]) {
+        handleNext();
+      }
+    }}
+    // onKeyPress={e =>
+    //   e.key === "Enter" && !!responses[Number(pageNumber) - 1] && handleNext()
+    // }
   >
     <ProgressBackground bg="black">
       <ProgressBar
@@ -79,19 +86,16 @@ const Component: React.ComponentType<IProps> = ({
         width={0.1 + (0.9 * (Number(pageNumber) - 1)) / questions.length}
       />
     </ProgressBackground>
-    <Button
+    {/* <Button
       className="back"
       onClick={handleBack}
       disabled={!responses[Number(pageNumber) - 1]}
     >
       Back
-    </Button>
+    </Button> */}
     <Question bg="#fff" m="1rem 0" p="1rem" width={[1, 1 / 2, 1 / 4]}>
       <Text mb="1rem" fontSize="0.875em" color="gray">
-        Question {pageNumber} of {questions.length}
-      </Text>
-      <Text mb="2rem" fontWeight="600">
-        {question.label}
+        Page {pageNumber} of {questions.length}
       </Text>
       {children}
       <Button
@@ -102,7 +106,7 @@ const Component: React.ComponentType<IProps> = ({
         borderColor="blue"
         border="1px solid"
         className="next"
-        onClick={handleNext}
+        onClick={() => console.log("click", pageNumber)}
         disabled={!responses[Number(pageNumber) - 1]}
       >
         Next

@@ -1,19 +1,19 @@
 describe("Multi-page application form for tenants", () => {
   it("Should have a field for full name", () => {
     cy.visit("/page/1");
-    cy.get("input.full-name").type("Satoshi Nakamoto");
+    cy.get('input[type="text"]').type("Satoshi Nakamoto");
   });
   it("Should have a field for email", () => {
     cy.visit("/page/2");
-    cy.get("input.email").type("satoshi@gmail.com");
+    cy.get('input[type="email"]').type("satoshi@gmail.com");
   });
   it("Should have a field for phone number", () => {
     cy.visit("/page/3");
-    cy.get("input.phone").type("+0000000000");
+    cy.get('input[type="tel"]').type("+0000-000-00-000");
   });
   it("Should have a field for - salary indication (radio buttons)", () => {
     cy.visit("/page/4");
-    cy.get("select.salary").select("0 - 1.000");
+    cy.get("select").select("0 - 1.000");
   });
   // - 0 - 1.000
   // - 1.000 - 2.000
