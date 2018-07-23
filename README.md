@@ -1,4 +1,4 @@
-# Rental Application Form
+# Rental Application Form [![CircleCI](https://circleci.com/gh/rstrom/rental-application.svg?style=svg)](https://circleci.com/gh/rstrom/rental-application)
 
 To run the application:
 
@@ -22,7 +22,7 @@ Or for the interactive test dashboard:
 yarn cypress open
 ```
 
-Try out the application [here](https://github.com/rstrom/rental-application)
+Try out the application [here](https://rstrom.github.io/rental-application)
 
 This code builds off another another repository [simple-survey](https://github.com/rstrom/simple-survey) which features a similar stack:
 
