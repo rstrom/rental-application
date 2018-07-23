@@ -1,0 +1,60 @@
+# adapted from https://blog.frederikring.com/articles/deploying-github-pages-circle-ci/
+
+version: 2
+jobs:
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      - image: cypress/base:8
+    working_directory: ~/repo
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+      - TERM: xterm
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          key: v1-deps-{{ .Branch }}
+          key: v1-deps
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.cache  ## cache both yarn and Cypress!
+      - run:
+          name: Build production assets
+          command: yarn build
+      - run:
+          name: Run tests
+          command: yarn start > /dev/null & yarn test
+      - deploy:
+          name: Deploy
+          command: |
+            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
+              git config --global user.email $GH_EMAIL
+              git config --global user.name $GH_NAME
+
+              git clone $CIRCLE_REPOSITORY_URL out
+
+              cd out
+              git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+              git rm -rf .
+              cd ..
+
+              yarn build
+
+              cp -a build/. out/.
+
+              mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+              cd out
+
+              git add -A
+              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+
+              git push origin $TARGET_BRANCH
+            fi
