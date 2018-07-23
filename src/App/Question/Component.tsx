@@ -81,6 +81,7 @@ const Component: React.ComponentType<IProps> = ({
   <Wrapper>
     <ProgressBackground bg="black">
       <ProgressBar
+        className="progress-bar"
         bg="blue"
         width={0.1 + (0.9 * (Number(pageNumber) - 1)) / questions.length}
       />
